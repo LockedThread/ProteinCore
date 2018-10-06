@@ -1,0 +1,9 @@
+name: ProteinCore
+version: 1.0
+main: com.protein.proteincore.ProteinCore
+depend: [Factions, Vault, WorldGuard]
+authors: [LilProteinShake]
+commands:
+  genbucket:
+    description: Command to manage GenBuckets.
+    aliases: [gb, gen, buckets]

@@ -1,0 +1,124 @@
+horizontal-distance: 32
+genbuckets:
+  vertical:
+    cobblestone:
+      gui-price: 500
+      placement-price: 10
+      gui-item:
+        name: '&e&l(!) &cCobbleStone GenBucket &e&l(!) &f- &c$500'
+        lore:
+        - '&eType: Vertical'
+        - '&ePlacement Price: $10'
+        - '&ePlace this to start the genbucket generation process'
+      placement-item:
+        name: '&cCobbleStone GenBucket'
+        lore:
+        - '&eType: Vertical'
+        - '&ePlacement Price: $10'
+        - '&ePlace this to start the genbucket generation process'
+    stone:
+      gui-price: 500
+      placement-price: 10
+      gui-item:
+        name: '&e&l(!) &cStone GenBucket &e&l(!) &f- &c$500'
+        lore:
+        - '&eType: Vertical'
+        - '&ePlacement Price: $10'
+        - '&ePlace this to start the genbucket generation process'
+      placement-item:
+        name: '&cStone GenBucket'
+        lore:
+        - '&eType: Vertical'
+        - '&ePlacement Price: $10'
+        - '&ePlace this to start the genbucket generation process'
+    obsidian:
+      gui-price: 5000
+      placement-price: 250
+      gui-item:
+        name: '&e&l(!) &cObsidian GenBucket &e&l(!) &f- &c$5000'
+        lore:
+        - '&eType: Vertical'
+        - '&ePlacement Price: $250'
+        - '&ePlace this to start the genbucket generation process'
+      placement-item:
+        name: '&eObsidian GenBucket'
+        lore:
+        - '&eType: Vertical'
+        - '&ePlacement Price: $250'
+        - '&ePlace this to start the genbucket generation process'
+    sand:
+      gui-price: 5000
+      placement-price: 500
+      gui-item:
+        name: '&e&l(!) &cSand GenBucket &e&l(!) &f- &c$500'
+        lore:
+        - '&eType: Vertical'
+        - '&ePlacement Price: $500'
+        - '&ePlace this to start the genbucket generation process'
+      placement-item:
+        name: '&eSand GenBucket'
+        lore:
+        - '&eType: Vertical'
+        - '&ePlacement Price: $500'
+        - '&ePlace this to start the genbucket generation process'
+    gravel:
+      gui-price: 5000
+      placement-price: 500
+      gui-item:
+        name: '&e&l(!) &cGravel GenBucket &e&l(!) &f- &c$500'
+        lore:
+        - '&eType: Vertical'
+        - '&ePlacement Price: $500'
+        - '&ePlace this to start the genbucket generation process'
+      placement-item:
+        name: '&eGravel GenBucket'
+        lore:
+        - '&eType: Vertical'
+        - '&ePlacement Price: $500'
+        - '&ePlace this to start the genbucket generation process'
+  horizontal:
+    cobblestone:
+      gui-price: 2000
+      placement-price: 50
+      gui-item:
+        name: '&e&l(!) &cCobbleStone GenBucket &e&l(!) &f- &c$2000'
+        lore:
+        - '&eType: Horizontal'
+        - '&ePlacement Price: $50'
+        - '&ePlace this to start the genbucket generation process'
+      placement-item:
+        name: '&cCobbleStone GenBucket'
+        lore:
+        - '&eType: Horizontal'
+        - '&ePlacement Price: $50'
+        - '&ePlace this to start the genbucket generation process'
+    stone:
+      gui-price: 750
+      placement-price: 50
+      gui-item:
+        name: '&e&l(!) &cStone GenBucket &e&l(!) &f- &c$500'
+        lore:
+        - '&eType: HORIZONTAL'
+        - '&ePlacement Price: $10'
+        - '&ePlace this to start the genbucket generation process'
+      placement-item:
+        name: '&cStone GenBucket'
+        lore:
+        - '&eType: HORIZONTAL'
+        - '&ePlacement Price: $10'
+        - '&ePlace this to start the genbucket generation process'
+    obsidian:
+      gui-price: 10000
+      placement-price: 200
+      gui-item:
+        name: '&e&l(!) &cObsidian GenBucket &e&l(!) &f- &c$10000'
+        lore:
+        - '&eType: Horizontal'
+        - '&ePlacement Price: $200'
+        - '&ePlace this to start the genbucket generation process'
+      placement-item:
+        name: '&eObsidian GenBucket'
+        lore:
+        - '&eType: Horizontal'
+        - '&ePlacement Price: $200'
+        - '&ePlace this to start the genbucket generation process'
