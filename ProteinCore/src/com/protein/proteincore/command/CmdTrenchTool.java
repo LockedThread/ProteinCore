@@ -3,11 +3,11 @@ package com.protein.proteincore.command;
 import com.google.common.base.Joiner;
 import com.protein.proteincore.ProteinCore;
 import com.protein.proteincore.async.runnables.ProteinRunnable;
+import com.protein.proteincore.enums.GenBucketType;
 import com.protein.proteincore.enums.Messages;
 import com.protein.proteincore.objs.TrenchTool;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
-
-import java.util.stream.IntStream;
 
 public class CmdTrenchTool extends Command {
 
@@ -36,17 +36,26 @@ public class CmdTrenchTool extends Command {
                     sendMessage(Messages.MUST_BE_POSITVE.toString().replace("{num}", getArg(3)));
                     return;
                 }
+                GenBucketType genBucketType = GenBucketType.valueOf(args[3].toUpperCase());
+                Material material = Material.matchMaterial(args[2].toUpperCase());
+                int amount = args.length == 5 ? Integer.parseInt(args[4]) : 1;
+                int i = 0;
+                while (i < amount) {
+                    target.getInventory().addItem(instance.getGenBucketManager().find(genBucketType, material).getGuiItemStack());
+                    i++;
+                }
 
                 new ProteinRunnable() {
                     @Override
                     public void run() {
                         for (TrenchTool trenchTool : ProteinCore.getInstance().getTrenchTools()) {
                             if ( trenchTool.getIdentifier().equalsIgnoreCase(getArg(2)) ) {
-                                if ( args.length == 4 ) {
-                                    IntStream.range(0, getArgAsInt(3)).forEach(i -> target.getInventory().addItem(trenchTool.getItemStack()));
-                                    return;
+                                int amount = args.length == 5 ? Integer.parseInt(args[4]) : 1;
+                                int i = 0;
+                                while (i < amount) {
+                                    target.getInventory().addItem(trenchTool.getItemStack());
+                                    i++;
                                 }
-                                target.getInventory().addItem(trenchTool.getItemStack());
                             }
                         }
                     }
