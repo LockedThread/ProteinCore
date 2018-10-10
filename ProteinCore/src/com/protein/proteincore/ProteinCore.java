@@ -27,6 +27,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Level;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class ProteinCore extends JavaPlugin {
@@ -92,12 +93,14 @@ public class ProteinCore extends JavaPlugin {
                     Material.matchMaterial(genBucketKey.toUpperCase()))).forEach(genBucket -> genBucketManager.getGenBuckets().add(genBucket));
         });
         ConfigurationSection trenchToolSection = getConfig().getConfigurationSection("trenchtools");
-        trenchToolSection.getKeys(false).forEach(key -> trenchTools.add(new TrenchTool(key, getItemStack(trenchToolSection.getString(key + ".material"), trenchToolSection.getString(key + ".name"), trenchToolSection.getStringList(key + ".lore")), Integer.parseInt(key.substring(0, 1)) / 2)));
+        trenchToolSection.getKeys(false).forEach((String key) -> {
+            int radius = Pattern.compile("^[0-9][0-9](x)[0-9][0-9]").matcher(key).find() ? Integer.parseInt(key.substring(0, 2)) : Integer.parseInt(key.substring(0, 1));
+            trenchTools.add(new TrenchTool(key, getItemStack(trenchToolSection.getString(key + ".material"), trenchToolSection.getString(key + ".name"), trenchToolSection.getStringList(key + ".lore")), radius / 2));
+        });
     }
 
     private void setupFastRemove() {
         String version = getServer().getClass().getPackage().getName().replace("v", "").split("\\.")[3];
-
         try {
             fastBlockUpdate = (FastBlockUpdate) Class.forName("com.protein.proteincore.fastblockupdate.versions.FastBlockUpdate_" + version).newInstance();
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {

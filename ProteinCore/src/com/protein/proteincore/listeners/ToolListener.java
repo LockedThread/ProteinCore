@@ -3,7 +3,6 @@ package com.protein.proteincore.listeners;
 import com.protein.proteincore.ProteinCore;
 import com.protein.proteincore.async.runnables.ProteinRunnable;
 import com.protein.proteincore.enums.Messages;
-import com.protein.proteincore.objs.TrenchTool;
 import com.protein.proteincore.utils.Utils;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -28,12 +27,7 @@ public class ToolListener implements Listener {
         new ProteinRunnable() {
             @Override
             public void run() {
-                for (TrenchTool trenchTool : ProteinCore.getInstance().getTrenchTools()) {
-                    if ( Utils.isItem(trenchTool.getItemStack(), hand) ) {
-                        trenchTool.run(event.getBlock().getLocation(), player);
-                        return;
-                    }
-                }
+                ProteinCore.getInstance().getTrenchTools().stream().filter(trenchTool -> Utils.isItem(trenchTool.getItemStack(), hand)).findFirst().ifPresent(trenchTool -> trenchTool.run(event.getBlock().getLocation(), player));
             }
         }.runTaskAsynchronously(ProteinCore.getInstance());
     }
