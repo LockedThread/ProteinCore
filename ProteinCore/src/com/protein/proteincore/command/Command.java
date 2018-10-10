@@ -3,7 +3,6 @@ package com.protein.proteincore.command;
 import com.protein.proteincore.ProteinCore;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.OfflinePlayer;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
@@ -15,7 +14,7 @@ public abstract class Command {
     CommandSender sender;
     String[] args;
 
-    public Command(String commandName) {
+    Command(String commandName) {
         this.commandName = commandName;
     }
 
@@ -59,7 +58,7 @@ public abstract class Command {
         return isPlayer() ? (Player) sender : null;
     }
 
-    OfflinePlayer getTarget(int i) {
+    Player getTarget(int i) {
         return Bukkit.getPlayer(getArg(i));
     }
 }

@@ -21,6 +21,6 @@ public class Utils {
     }
 
     public static boolean isItem(ItemStack a, ItemStack b) {
-        return a != null && b != null && a.getType() == b.getType() && ((a.hasItemMeta() && b.hasItemMeta()) && Bukkit.getItemFactory().equals(a.getItemMeta(), b.getItemMeta()) || !a.hasItemMeta() && !b.hasItemMeta());
+        return a != null && b != null && a.getType() == b.getType() && ((a.hasItemMeta() && b.hasItemMeta()) && Bukkit.getItemFactory().equals(a.getItemMeta(), b.getItemMeta()));
     }
 }

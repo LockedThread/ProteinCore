@@ -9,7 +9,9 @@ public enum Messages {
     GENBUCKET_CANCELLED_PROCESS("&eYou've &ccancelled &ea genbucket process @ {loc}"),
     GENBUCKET_PURCHASED("&aYou have purchased a {genbucket} GenBucket!"),
     GENBUCKET_PLACED("&c&l-{money}"),
-    ;
+
+    MUST_BE_POSITVE("&c&l(!) &c{num} must be positive number."),
+    CANT_EDIT("&c&l(!) &cYou can't edit terrain here.");
 
     public String val;
 

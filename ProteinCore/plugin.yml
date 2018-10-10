@@ -6,4 +6,5 @@ authors: [LilProteinShake]
 commands:
   genbucket:
     description: Command to manage GenBuckets.
-    aliases: [gb, gen, buckets]
+  trenchtool:
+    description: Command to manage TrenchTools.

@@ -1,4 +1,32 @@
 horizontal-distance: 32
+
+trenchtools:
+  3x3:
+    name: '&f✘ &c&l3x3 Trench Pickaxe &f✘'
+    material: 'DIAMOND_PICKAXE'
+    lore:
+    - '&eRemoves a 3x3 area'
+  5x5:
+    name: '&f✘ &c&l5x5 Trench Pickaxe &f✘'
+    material: 'DIAMOND_PICKAXE'
+    lore:
+    - '&eRemoves a 5x5 area'
+  7x7:
+    name: '&f✘ &c&l7x7 Trench Pickaxe &f✘'
+    material: 'DIAMOND_PICKAXE'
+    lore:
+    - '&eRemoves a 7x7 area'
+  9x9:
+    name: '&f✘ &c&l9x9 Trench Pickaxe &f✘'
+    material: 'DIAMOND_PICKAXE'
+    lore:
+    - '&eRemoves a 9x9 area'
+  11x11:
+    name: '&f✘ &c&l11x11 Trench Pickaxe &f✘'
+    material: 'DIAMOND_PICKAXE'
+    lore:
+    - '&eRemoves a 11x11 area'
+
 genbuckets:
   vertical:
     cobblestone:

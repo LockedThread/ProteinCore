@@ -1,7 +1,7 @@
 package com.protein.proteincore.queues;
 
 import com.protein.proteincore.ProteinCore;
-import com.protein.proteincore.callbacks.ChunkLoadCallBack;
+import com.protein.proteincore.async.callbacks.ProteinCallback;
 import com.protein.proteincore.processes.GenerationProcess;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -19,7 +19,7 @@ public class GenBucketTestQueue extends BukkitRunnable {
 
     @Override
     public void run() {
-        ChunkLoadCallBack chunkLoadCallBack = generationProcess -> instance.getServer().getScheduler().runTaskAsynchronously(instance, () -> instance.getGenBucketManager().getGenerationProcesses().add(generationProcess));
+        ProteinCallback callBack = generationProcess -> instance.getServer().getScheduler().runTaskAsynchronously(instance, () -> instance.getGenBucketManager().getGenerationProcesses().add((GenerationProcess) generationProcess[0]));
         for (int i = 0; i < 400; i++) {
             GenerationProcess generationProcess = generationProcesses.poll();
             if ( generationProcess == null ) {
@@ -29,7 +29,7 @@ public class GenBucketTestQueue extends BukkitRunnable {
             instance.getServer().getScheduler().runTask(instance, () -> {
                 if ( !generationProcess.getPlacedLocation().getChunk().isLoaded() )
                     generationProcess.getPlacedLocation().getChunk().load();
-                chunkLoadCallBack.call(generationProcess);
+                callBack.call(generationProcess);
             });
         }
     }

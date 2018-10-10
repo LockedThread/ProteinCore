@@ -38,12 +38,7 @@ public class GenBucketManager extends Manager {
     }
 
     public GenBucket find(ItemStack itemStack) {
-        for (GenBucket genBucket : genBuckets) {
-            if ( Utils.isItem(genBucket.getPlacementItemStack(), itemStack) || Utils.isItem(genBucket.getGuiItemStack(), itemStack) ) {
-                return genBucket;
-            }
-        }
-        return null;
+        return genBuckets.stream().filter(genBucket -> Utils.isItem(genBucket.getPlacementItemStack(), itemStack) || Utils.isItem(genBucket.getGuiItemStack(), itemStack)).findFirst().orElse(null);
     }
 
 

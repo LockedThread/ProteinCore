@@ -25,9 +25,7 @@ public class GenBucketListener implements Listener {
             return;
         if ( Utils.canEdit(event.getPlayer(), event.getBlockPlaced().getLocation()) ) {
             GenBucket genBucket = instance.getGenBucketManager().find(event.getItemInHand());
-            if ( genBucket == null ) {
-                return;
-            }
+            if ( genBucket == null ) return;
             double balance = instance.getEconomy().getBalance(player);
             double placementCost = genBucket.getPlacementPrice();
             if ( balance >= placementCost ) {
