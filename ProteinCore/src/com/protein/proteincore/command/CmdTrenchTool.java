@@ -19,7 +19,7 @@ public class CmdTrenchTool extends Command {
     public void run() {
         if ( !sender.hasPermission("trenchtool.give") ) return;
         if ( args.length == 0 || (args.length == 1 && getArg(0).equalsIgnoreCase("help")) ) {
-            sendMessage("&e&l(!) &e/trenchtool give [type] {amount}");
+            sendMessage("&e&l(!) &e/trenchtool give [Player] [type] {amount}");
             sendMessage("&e&l(!) &e/trenchtool list");
         } else if ( args.length == 1 ) {
             if ( getArg(0).equalsIgnoreCase("list") ) {
