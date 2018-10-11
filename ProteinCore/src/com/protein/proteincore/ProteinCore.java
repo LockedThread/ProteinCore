@@ -11,10 +11,7 @@ import com.protein.proteincore.listeners.FreezeListener;
 import com.protein.proteincore.listeners.GenBucketListener;
 import com.protein.proteincore.listeners.ToolListener;
 import com.protein.proteincore.managers.GenBucketManager;
-import com.protein.proteincore.modules.AntiRegenModule;
-import com.protein.proteincore.modules.AntiSpawnerProtectionModule;
-import com.protein.proteincore.modules.GraceModule;
-import com.protein.proteincore.modules.Module;
+import com.protein.proteincore.modules.*;
 import com.protein.proteincore.objs.GenBucket;
 import com.protein.proteincore.objs.TrenchTool;
 import net.milkbowl.vault.economy.Economy;
@@ -78,7 +75,7 @@ public class ProteinCore extends JavaPlugin {
         this.registerListners(new GenBucketListener(this), new GenBucketGUI(), new ToolListener(), new FreezeListener());
 
         this.setupConfig();
-        this.registerModules(new GraceModule(this), new AntiRegenModule(this), new AntiSpawnerProtectionModule(this));
+        this.registerModules(new GraceModule(this), new AntiRegenModule(this), new AntiSpawnerProtectionModule(this), new AntiBowBoost(this));
 
         this.setupFastRemove();
         this.setupVault();
