@@ -13,7 +13,13 @@ public enum Messages {
     MUST_BE_POSITVE("&c&l(!) &c{num} must be positive number."),
     CANT_EDIT("&c&l(!) &cYou can't edit terrain here."),
 
-    GRACE_PERIOD_DENY("&c&l(!) &cYou can't do this while the Grace Period is active.");
+    GRACE_PERIOD_DENY("&c&l(!) &cYou can't do this while the Grace Period is active."),
+    FREEZE_ERROR("&c&l(!) &cError freezing &e{player}&c."),
+    FREEZE_FROZEN("&a&l(!) &aYou've frozen &e{player}&a."),
+    FREEZE_UNFROZEN("&a&l(!) &aYou've unfrozen &e{player}&a."),
+    FREEZE_YOUVE_BEEN_FROZEN("&c&l(!) &cYou've been frozen please join discord.gg/xxxxx"),
+    FREEZE_YOUVE_BEEN_UNFROZEN("&a&l(!) &aYou've been unfrozen."),
+    FREEZE_BROADCAST_FROZEN("&b{player} has been frozen!");
 
     public String val;
 

@@ -1,11 +1,13 @@
 package com.protein.proteincore;
 
+import com.protein.proteincore.command.CmdFreeze;
 import com.protein.proteincore.command.CmdGenBucket;
 import com.protein.proteincore.command.CmdTrenchTool;
 import com.protein.proteincore.command.Command;
 import com.protein.proteincore.enums.GenBucketType;
 import com.protein.proteincore.fastblockupdate.FastBlockUpdate;
 import com.protein.proteincore.guis.GenBucketGUI;
+import com.protein.proteincore.listeners.FreezeListener;
 import com.protein.proteincore.listeners.GenBucketListener;
 import com.protein.proteincore.listeners.ToolListener;
 import com.protein.proteincore.managers.GenBucketManager;
@@ -55,11 +57,10 @@ public class ProteinCore extends JavaPlugin {
      * Lists
      */
 
-    private ArrayList<TrenchTool> trenchTools = new ArrayList<>();
-
-
+    private ArrayList<TrenchTool> trenchTools;
     private GenBucketManager genBucketManager;
     private Command[] commands;
+    private ArrayList<String> frozenUUIDs = new ArrayList<>();
 
     public static ProteinCore getInstance() {
         return instance;
@@ -69,9 +70,12 @@ public class ProteinCore extends JavaPlugin {
     public void onEnable() {
         instance = this;
 
-        this.commands = new Command[]{ new CmdGenBucket(), new CmdTrenchTool() };
+        this.trenchTools = new ArrayList<>();
+        this.frozenUUIDs = new ArrayList<>();
+
+        this.commands = new Command[]{ new CmdGenBucket(), new CmdTrenchTool(), new CmdFreeze() };
         this.genBucketManager = new GenBucketManager(this);
-        this.registerListners(new GenBucketListener(this), new GenBucketGUI(), new ToolListener());
+        this.registerListners(new GenBucketListener(this), new GenBucketGUI(), new ToolListener(), new FreezeListener());
 
         this.setupConfig();
         this.registerModules(new GraceModule(this), new AntiRegenModule(this), new AntiSpawnerProtectionModule(this));
@@ -179,6 +183,10 @@ public class ProteinCore extends JavaPlugin {
 
     public ArrayList<TrenchTool> getTrenchTools() {
         return trenchTools;
+    }
+
+    public ArrayList<String> getFrozenUUIDs() {
+        return frozenUUIDs;
     }
 
     private ItemStack getItemStack(String material, String name, List<String> lore) {

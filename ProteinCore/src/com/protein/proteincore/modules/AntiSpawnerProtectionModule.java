@@ -32,13 +32,13 @@ public class AntiSpawnerProtectionModule extends Module {
                                 for (int y = location.getBlockY() - radius; y <= location.getBlockY() + radius; y++) {
                                     Block block = location.getWorld().getBlockAt(x, y, z);
                                     if ( block.getType() == Material.WATER || block.getType() == Material.STATIONARY_WATER ) {
-                                        ProteinCore.getInstance().getFastBlockUpdate().run(block.getLocation(), Material.AIR);
+                                        getInstance().getFastBlockUpdate().run(block.getLocation(), Material.AIR);
                                     }
                                 }
                             }
                         }
                     }
-                }.runTaskAsynchronously(ProteinCore.getInstance());
+                }.runTaskAsynchronously(getInstance());
             }
         }
     }

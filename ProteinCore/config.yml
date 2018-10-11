@@ -1,4 +1,5 @@
 horizontal-distance: 32
+broadcast-frozen: true
 
 trenchtools:
   3x3:

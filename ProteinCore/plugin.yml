@@ -8,3 +8,5 @@ commands:
     description: Command to manage GenBuckets.
   trenchtool:
     description: Command to manage TrenchTools.
+  freeze:
+    description: Command to freeze people.

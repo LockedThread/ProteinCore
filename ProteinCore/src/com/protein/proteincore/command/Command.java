@@ -13,7 +13,7 @@ public abstract class Command {
     CommandSender sender;
     String[] args;
 
-    Command(String commandName) {
+    public Command(String commandName) {
         this.commandName = commandName;
     }
 

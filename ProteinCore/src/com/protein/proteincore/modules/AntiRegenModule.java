@@ -28,13 +28,13 @@ public class AntiRegenModule extends Module {
                             for (int y = location.getBlockY() - radius; y <= location.getBlockY() + radius; y++) {
                                 Block block = location.getWorld().getBlockAt(x, y, z);
                                 if ( block.getType() == Material.LAVA || block.getType() == Material.STATIONARY_LAVA ) {
-                                    ProteinCore.getInstance().getFastBlockUpdate().run(block.getLocation(), Material.AIR);
+                                    getInstance().getFastBlockUpdate().run(block.getLocation(), Material.AIR);
                                 }
                             }
                         }
                     }
                 }
-            }.runTaskAsynchronously(ProteinCore.getInstance());
+            }.runTaskAsynchronously(getInstance());
         }
     }
 }
