@@ -3,10 +3,8 @@ package com.protein.proteincore.command;
 import com.google.common.base.Joiner;
 import com.protein.proteincore.ProteinCore;
 import com.protein.proteincore.async.runnables.ProteinRunnable;
-import com.protein.proteincore.enums.GenBucketType;
 import com.protein.proteincore.enums.Messages;
 import com.protein.proteincore.objs.TrenchTool;
-import org.bukkit.Material;
 import org.bukkit.entity.Player;
 
 public class CmdTrenchTool extends Command {
@@ -35,14 +33,6 @@ public class CmdTrenchTool extends Command {
                     if ( args.length == 4 && isInt(getArg(3)) ) {
                         sendMessage(Messages.MUST_BE_POSITVE.toString().replace("{num}", getArg(3)));
                         return;
-                    }
-                    GenBucketType genBucketType = GenBucketType.valueOf(args[3].toUpperCase());
-                    Material material = Material.matchMaterial(args[2].toUpperCase());
-                    int amount = args.length == 4 ? Integer.parseInt(args[3]) : 1;
-                    int i = 0;
-                    while (i < amount) {
-                        target.getInventory().addItem(instance.getGenBucketManager().find(genBucketType, material).getGuiItemStack());
-                        i++;
                     }
 
                     new ProteinRunnable() {

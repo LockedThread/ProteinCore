@@ -11,7 +11,9 @@ public enum Messages {
     GENBUCKET_PLACED("&c&l-{money}"),
 
     MUST_BE_POSITVE("&c&l(!) &c{num} must be positive number."),
-    CANT_EDIT("&c&l(!) &cYou can't edit terrain here.");
+    CANT_EDIT("&c&l(!) &cYou can't edit terrain here."),
+
+    GRACE_PERIOD_DENY("&c&l(!) &cYou can't do this while the Grace Period is active.");
 
     public String val;
 

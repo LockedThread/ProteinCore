@@ -9,6 +9,8 @@ import com.protein.proteincore.guis.GenBucketGUI;
 import com.protein.proteincore.listeners.GenBucketListener;
 import com.protein.proteincore.listeners.ToolListener;
 import com.protein.proteincore.managers.GenBucketManager;
+import com.protein.proteincore.modules.GraceModule;
+import com.protein.proteincore.modules.Module;
 import com.protein.proteincore.objs.GenBucket;
 import com.protein.proteincore.objs.TrenchTool;
 import net.milkbowl.vault.economy.Economy;
@@ -64,14 +66,43 @@ public class ProteinCore extends JavaPlugin {
     @Override
     public void onEnable() {
         instance = this;
-        commands = new Command[]{ new CmdGenBucket(), new CmdTrenchTool() };
+
+        this.commands = new Command[]{ new CmdGenBucket(), new CmdTrenchTool() };
         this.genBucketManager = new GenBucketManager(this);
         this.registerListners(new GenBucketListener(this), new GenBucketGUI(), new ToolListener());
+
         this.setupConfig();
+        this.registerModules(new GraceModule(this));
+
         this.setupFastRemove();
         this.setupVault();
 
     }
+
+    private void registerModules(Module... modules) {
+        try {
+            for (Module module : modules) {
+                ConfigurationSection moduleSection = getConfig().getConfigurationSection("modules");
+                if ( moduleSection == null ) moduleSection = getConfig().createSection("modules");
+
+                if ( moduleSection.isSet(module.getName()) ) {
+                    if ( moduleSection.getBoolean(module.getName()) ) {
+                        getServer().getPluginManager().registerEvents(module, this);
+                    }
+                } else {
+                    moduleSection.set(module.getName(), module.getDefaultValue());
+                    if ( module.getDefaultValue() ) {
+                        getServer().getPluginManager().registerEvents(module, this);
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        getLogger().log(Level.INFO, "8");
+        saveConfig();
+    }
+
 
     @Override
     public void onDisable() {
@@ -125,7 +156,8 @@ public class ProteinCore extends JavaPlugin {
     }
 
     @Override
-    public boolean onCommand(CommandSender sender, org.bukkit.command.Command bukkitCommand, String label, String[] args) {
+    public boolean onCommand(CommandSender sender, org.bukkit.command.Command bukkitCommand, String label, String[]
+            args) {
         Arrays.stream(commands).filter(command -> bukkitCommand.getName().equalsIgnoreCase(command.commandName)).forEach(command -> {
             command.init(sender, args);
             command.run();
