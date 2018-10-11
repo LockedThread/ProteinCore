@@ -9,6 +9,8 @@ import com.protein.proteincore.guis.GenBucketGUI;
 import com.protein.proteincore.listeners.GenBucketListener;
 import com.protein.proteincore.listeners.ToolListener;
 import com.protein.proteincore.managers.GenBucketManager;
+import com.protein.proteincore.modules.AntiRegenModule;
+import com.protein.proteincore.modules.AntiSpawnerProtectionModule;
 import com.protein.proteincore.modules.GraceModule;
 import com.protein.proteincore.modules.Module;
 import com.protein.proteincore.objs.GenBucket;
@@ -72,7 +74,7 @@ public class ProteinCore extends JavaPlugin {
         this.registerListners(new GenBucketListener(this), new GenBucketGUI(), new ToolListener());
 
         this.setupConfig();
-        this.registerModules(new GraceModule(this));
+        this.registerModules(new GraceModule(this), new AntiRegenModule(this), new AntiSpawnerProtectionModule(this));
 
         this.setupFastRemove();
         this.setupVault();
@@ -80,26 +82,20 @@ public class ProteinCore extends JavaPlugin {
     }
 
     private void registerModules(Module... modules) {
-        try {
-            for (Module module : modules) {
-                ConfigurationSection moduleSection = getConfig().getConfigurationSection("modules");
-                if ( moduleSection == null ) moduleSection = getConfig().createSection("modules");
-
-                if ( moduleSection.isSet(module.getName()) ) {
-                    if ( moduleSection.getBoolean(module.getName()) ) {
-                        getServer().getPluginManager().registerEvents(module, this);
-                    }
-                } else {
-                    moduleSection.set(module.getName(), module.getDefaultValue());
-                    if ( module.getDefaultValue() ) {
-                        getServer().getPluginManager().registerEvents(module, this);
-                    }
+        ConfigurationSection moduleSection = getConfig().getConfigurationSection("modules");
+        if ( moduleSection == null ) moduleSection = getConfig().createSection("modules");
+        for (Module module : modules) {
+            if ( moduleSection.isSet(module.getName()) ) {
+                if ( moduleSection.getBoolean(module.getName()) ) {
+                    getServer().getPluginManager().registerEvents(module, this);
+                }
+            } else {
+                moduleSection.set(module.getName(), module.getDefaultValue());
+                if ( module.getDefaultValue() ) {
+                    getServer().getPluginManager().registerEvents(module, this);
                 }
             }
-        } catch (Exception e) {
-            e.printStackTrace();
         }
-        getLogger().log(Level.INFO, "8");
         saveConfig();
     }
 

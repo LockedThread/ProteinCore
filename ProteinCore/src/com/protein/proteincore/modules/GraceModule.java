@@ -17,7 +17,7 @@ import org.bukkit.event.player.PlayerInteractEvent;
 public class GraceModule extends Module {
 
     public GraceModule(ProteinCore instance) {
-        super(instance, "grace", true);
+        super(instance, "grace", false);
     }
 
     @EventHandler

@@ -8,7 +8,6 @@ import org.bukkit.entity.Player;
 
 public abstract class Command {
 
-
     public String commandName;
     ProteinCore instance = ProteinCore.getInstance();
     CommandSender sender;
