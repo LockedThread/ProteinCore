@@ -19,7 +19,10 @@ public enum Messages {
     FREEZE_UNFROZEN("&a&l(!) &aYou've unfrozen &e{player}&a."),
     FREEZE_YOUVE_BEEN_FROZEN("&c&l(!) &cYou've been frozen please join discord.gg/xxxxx"),
     FREEZE_YOUVE_BEEN_UNFROZEN("&a&l(!) &aYou've been unfrozen."),
-    FREEZE_BROADCAST_FROZEN("&b{player} has been frozen!");
+    FREEZE_BROADCAST_FROZEN("&b{player} has been frozen!"),
+
+    DEATH_MESSAGE_KILLER("&c{player} has been killed by {killer}"),
+    DEATH_MESSAGE_OTHER("&c{player} has been killed by {reason}");
 
     public String val;
 

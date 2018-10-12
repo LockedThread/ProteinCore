@@ -72,13 +72,13 @@ public class ProteinCore extends JavaPlugin {
 
         this.commands = new Command[]{ new CmdGenBucket(), new CmdTrenchTool(), new CmdFreeze() };
         this.genBucketManager = new GenBucketManager(this);
-        this.registerListners(new GenBucketListener(this), new GenBucketGUI(), new ToolListener(), new FreezeListener());
+        this.registerListeners(new GenBucketListener(this), new GenBucketGUI(), new ToolListener(), new FreezeListener());
 
         this.setupConfig();
-        this.registerModules(new GraceModule(this), new AntiRegenModule(this), new AntiSpawnerProtectionModule(this), new AntiBowBoost(this));
+        this.registerModules(new GraceModule(this), new AntiRegenModule(this), new AntiSpawnerProtectionModule(this), new AntiBowBoostModule(this), new DeathMessageModule(this));
 
         this.setupFastRemove();
-        this.setupVault();
+        this.setupDependencies();
 
     }
 
@@ -137,9 +137,12 @@ public class ProteinCore extends JavaPlugin {
         }
     }
 
-    private void setupVault() {
-        if ( getServer().getPluginManager().getPlugin("Vault") == null )
+    private void setupDependencies() {
+        if ( getServer().getPluginManager().getPlugin("Vault") == null || getServer().getPluginManager().getPlugin("Factions") == null ) {
+            getLogger().log(Level.WARNING, "You need Vault & FactionsUUID to use this plugin.");
+            getPluginLoader().disablePlugin(this);
             return;
+        }
 
         RegisteredServiceProvider<Economy> rsp = Bukkit.getServicesManager().getRegistration(Economy.class);
         if ( rsp == null ) {
@@ -148,7 +151,7 @@ public class ProteinCore extends JavaPlugin {
         economy = rsp.getProvider();
     }
 
-    private void registerListners(Listener... listeners) {
+    private void registerListeners(Listener... listeners) {
         Arrays.stream(listeners).forEach(listener -> getServer().getPluginManager().registerEvents(listener, this));
     }
 

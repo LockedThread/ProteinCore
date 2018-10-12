@@ -7,9 +7,9 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 
-public class AntiBowBoost extends Module {
+public class AntiBowBoostModule extends Module {
 
-    public AntiBowBoost(ProteinCore instance) {
+    public AntiBowBoostModule(ProteinCore instance) {
         super(instance, "anti-bowboost", true);
     }
 
